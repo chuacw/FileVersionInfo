@@ -1,8 +1,8 @@
-﻿unit FileVersion;
+unit FileVersion;
 
 interface
 type
-  TFilenameVersion = class
+  TFileVersionInfo = class
   private
     FInfo: array of Char;
     FInfoSize: Cardinal;
@@ -56,39 +56,39 @@ implementation
 
 { TFilenameVersion }
 
-constructor TFilenameVersion.Create(const Filename: string);
+constructor TFileVersionInfo.Create(const Filename: string);
 begin
   inherited Create;
   FFileName := Filename;
 end;
 
-function TFilenameVersion.GetComments: string;
+function TFileVersionInfo.GetComments: string;
 begin
   if FComments = '' then
     FComments := Values['Comments'];
   Result := FComments;
 end;
 
-function TFilenameVersion.GetCompanyName: string;
+function TFileVersionInfo.GetCompanyName: string;
 begin
   if FCompanyName = '' then
     FCompanyName := Values['CompanyName'];
   Result := FCompanyName;
 end;
 
-function TFilenameVersion.GetDescription: string;
+function TFileVersionInfo.GetDescription: string;
 begin
   if FDescription = '' then
     FDescription := Values['FileDescription'];
   Result := FDescription;
 end;
 
-function TFilenameVersion.GetFilename: string;
+function TFileVersionInfo.GetFilename: string;
 begin
   Result := FFilename;
 end;
 
-function TFilenameVersion.GetFileVersionString(
+function TFileVersionInfo.GetFileVersionString(
   const KeyName: string): string;
 var
   Temp: Cardinal;
@@ -108,33 +108,33 @@ begin
     end;
 end;
 
-function TFilenameVersion.GetInternalName: string;
+function TFileVersionInfo.GetInternalName: string;
 begin
   if FInternalName = '' then
     FInternalName := Values['InternalName'];
   Result := FInternalName;
 end;
 
-function TFilenameVersion.GetValue(const KeyName: string): string;
+function TFileVersionInfo.GetValue(const KeyName: string): string;
 begin
   Result := GetFileVersionString(KeyName);
 end;
 
-function TFilenameVersion.GetLegalCopyright: string;
+function TFileVersionInfo.GetLegalCopyright: string;
 begin
   if FLegalCopyright = '' then
     FLegalCopyright := Values['LegalCopyright'];
   Result := FLegalCopyright;
 end;
 
-function TFilenameVersion.GetLegalTrademarks: string;
+function TFileVersionInfo.GetLegalTrademarks: string;
 begin
   if FLegalTrademarks = '' then
     FLegalTrademarks := Values['LegalTrademarks'];
   Result := FLegalTrademarks;
 end;
 
-function TFilenameVersion.GetNLSKey: string;
+function TFileVersionInfo.GetNLSKey: string;
 var
   P: Pointer;
   Len: Cardinal;
@@ -148,28 +148,28 @@ begin
   Result := FKey;
 end;
 
-function TFilenameVersion.GetOriginalFilename: string;
+function TFileVersionInfo.GetOriginalFilename: string;
 begin
   if FOriginalFilename = '' then
     FOriginalFilename := Values['OriginalFilename'];
   Result := FOriginalFilename;
 end;
 
-function TFilenameVersion.GetProductName: string;
+function TFileVersionInfo.GetProductName: string;
 begin
   if FProductName = '' then
     FProductName := Values['ProductName'];
   Result := FProductName;
 end;
 
-function TFilenameVersion.GetProductVersion: string;
+function TFileVersionInfo.GetProductVersion: string;
 begin
   if FProductVersion = '' then
     FProductVersion := Values['ProductVersion'];
   Result := FProductVersion;
 end;
 
-function TFilenameVersion.GetVersion: string;
+function TFileVersionInfo.GetVersion: string;
 begin
   if FVersion = '' then
     FVersion := Values['FileVersion'];
