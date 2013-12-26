@@ -32,6 +32,7 @@ type
     function GetOriginalFilename: string;
     function GetProductName: string;
     function GetProductVersion: string;
+    function GetKeys(const KeyName: string): string;
   protected
     property Key: string read GetNLSKey;
   public
@@ -47,6 +48,7 @@ type
     property ProductName: string read GetProductName;
     property ProductVersion: string read GetProductVersion;
     property Comments: string read GetComments;
+    property Keys[const KeyName: string]: string read GetKeys;
   end;
 
 implementation
@@ -111,6 +113,11 @@ begin
   if FInternalName = '' then
     FInternalName := GetFileVersionString('InternalName');
   Result := FInternalName;
+end;
+
+function TFilenameVersion.GetKeys(const KeyName: string): string;
+begin
+  Result := GetFileVersionString(KeyName);
 end;
 
 function TFilenameVersion.GetLegalCopyright: string;
