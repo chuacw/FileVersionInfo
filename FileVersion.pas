@@ -1,4 +1,4 @@
-unit FileVersion;
+﻿unit FileVersion;
 
 interface
 type
@@ -48,7 +48,7 @@ type
     property ProductName: string read GetProductName;
     property ProductVersion: string read GetProductVersion;
     property Comments: string read GetComments;
-    property Values[const KeyName: string]: string read GetValue;
+    property Values[const KeyName: string]: string read GetValue; default;
   end;
 
 implementation
@@ -66,7 +66,7 @@ function TFilenameVersion.GetComments: string;
 begin
   if FComments = '' then
     FComments := Values['Comments'];
-  Result := FCompanyName;
+  Result := FComments;
 end;
 
 function TFilenameVersion.GetCompanyName: string;
@@ -131,7 +131,7 @@ function TFilenameVersion.GetLegalTrademarks: string;
 begin
   if FLegalTrademarks = '' then
     FLegalTrademarks := Values['LegalTrademarks'];
-  Result := FLegalCopyright;
+  Result := FLegalTrademarks;
 end;
 
 function TFilenameVersion.GetNLSKey: string;
